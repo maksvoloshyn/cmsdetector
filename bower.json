@@ -1,0 +1,22 @@
+{
+  "name": "cmsdetector",
+  "main": "cmsdetector.js",
+  "authors": [
+    "maximvoloshin <maxandvictory@gmail.com>"
+  ],
+  "description": "Tool to detect used CMS for current website.",
+  "moduleType": [],
+  "keywords": [
+    "cms",
+    "platform"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
