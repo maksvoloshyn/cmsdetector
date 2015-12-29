@@ -1,5 +1,5 @@
 (function () {
-    var CMS_DICT = ['wordpress', 'joomla', 'drupal', 'magento'];
+    var CMS_DICT = ['wordpress', 'joomla', 'drupal', 'magento', 'prestashop', 'opencart'];
 
     function detectCMS () {
         var cms;
@@ -47,13 +47,30 @@
             cms;
 
         if (document.querySelectorAll('[src^="/wp-content/"]').length > 0 ||
-            document.querySelectorAll('[src^="' + host + '/wp-content/"]').length > 0)
+            document.querySelectorAll('[src^="' + host + '/wp-content/"]').length > 0 ||
+            document.querySelectorAll('[href^="/wp-content/"]').length > 0 ||
+            document.querySelectorAll('[href^="' + host + '/wp-content/"]').length > 0)
             cms = 'wordpress';
-        console.log(cms);
+        else if (document.querySelectorAll('[src^="catalog/view/theme/"]').length > 0 ||
+            document.querySelectorAll('[src^="' + host + '/catalog/view/theme/"]').length > 0 ||
+            document.querySelectorAll('[href^="catalog/view/theme/"]').length > 0 ||
+            document.querySelectorAll('[href^="' + host + '/catalog/view/theme/"]').length > 0)
+            cms = 'opencart';
+        else if (document.querySelectorAll('[src^="//cdn.shopify.com/"]').length > 0 ||
+            document.querySelectorAll('[src^="//cdn.shopify.com/"]').length > 0)
+            cms = 'shopify';
+
         return cms;
     }
 
-    window.detectCMS = function () {
-        return detectCMS();
-    };
+    if (typeof define === 'function' && define.amd) {
+        define([], function() {
+            return detectCMS;
+            return detectCMS;
+        });
+    } else {
+        window.detectCMS = function () {
+            return detectCMS();
+        };
+    }
 })();
