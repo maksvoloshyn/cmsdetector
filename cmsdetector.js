@@ -66,7 +66,6 @@
     if (typeof define === 'function' && define.amd) {
         define([], function() {
             return detectCMS;
-            return detectCMS;
         });
     } else {
         window.detectCMS = function () {
